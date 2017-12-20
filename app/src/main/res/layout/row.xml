@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="100dp"
+    android:id="@+id/card_cont"
+    android:layout_margin="6dp"
+    android:layout_height="150dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<TextView
+    android:background="@color/colorPrimaryDark"
+    android:layout_margin="5dp"
+    android:layout_gravity="center"
+    android:textColor="#fff"
+    android:gravity="center"
+    android:layout_width="90dp"
+    android:layout_height="90dp"
+    android:id="@+id/row_char"
+    android:textSize="25sp"
+    />
+
+    <TextView
+        android:text="####"
+        android:id="@+id/row_names"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="20sp" />
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>
