@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,11 +16,13 @@ import android.widget.Toast;
 
 public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolders> {
     private  String[] namesArray;
+    private int [] photo_array;
     private Context context;
-    public Adapter(String [] name , Context co){
+    public Adapter(Context co,String [] name ,int[] p_array){
         this.context=co;
         this.namesArray=name;
-    }
+        this.photo_array=p_array;
+        }
 
     @Override
     public ViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -32,8 +35,7 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolders> {
     public void onBindViewHolder(ViewHolders holder, final int position) {
         // وضع الاسم فى مكان الاسماء
         holder.TextName.setText(namesArray[position]);
-        //الحصول على الحرف الاول ووضعه فى المكان المخصص له
-        holder.firstChar.setText(String.valueOf(namesArray[position].charAt(0)));
+        holder.photo.setImageResource(photo_array[position]);
 
         // الحدث عند الضغط
         holder.card.setOnClickListener(new View.OnClickListener() {
@@ -43,17 +45,7 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolders> {
             }
         });
 
-        // تغير خلفيه الحرف
-        if (position%2==0) {
 
-            holder.firstChar.setBackgroundColor(context.getResources().getColor(R.color.orang));
-        }
-        else if(position %3==0){
-            holder.firstChar.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
-        }
-       else {
-            holder.firstChar.setBackgroundColor(context.getResources().getColor(R.color.green));
-        }
     }
 
 
@@ -63,12 +55,13 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolders> {
 
     }
     public class ViewHolders extends RecyclerView.ViewHolder {
-        private TextView TextName ,firstChar;
+        private TextView TextName;
+        private ImageView photo ;
         private CardView card;
         public ViewHolders(View layout) {
             super(layout);
             TextName=(TextView)layout.findViewById(R.id.row_names);
-            firstChar=(TextView)layout.findViewById(R.id.row_char);
+            photo=(ImageView)layout.findViewById(R.id.photo);
             card=(CardView)layout.findViewById(R.id.card_cont);
         }
     }
